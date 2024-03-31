@@ -1,19 +1,22 @@
-﻿// // Задайте произвольный массив. 
-// Выведете его элементы, начиная с конца. 
-// Использовать рекурсию, не использовать циклы.
+﻿// // Напишите программу вычисления функции Аккермана
+//  с помощью рекурсии. 
+//  Даны два неотрицательных числа m и n.
+// m = 2, n = 3 -> A(m,n) = 29
 
-// [1, 2, 5, 0, 10, 34] => 34 10 0 5 2 1 
-
-
-void PrintElementsReverse(int[] Arr, int n)
+Console.Write("Введите значение n: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите значение m: ");
+int m = Convert.ToInt32(Console.ReadLine());
+int Ask(int m, int n)
 {
-    if (n > 0)
-    {
-        Console.Write(Arr[n] + " ");
-        PrintElementsReverse(Arr, n - 1);
-    }
-    else Console.WriteLine(Arr[0]);
+if (m == 0) return n + 1;
+if (n == 0) return Ask(m - 1, 1);
+return Ask(m - 1, Ask(m, n - 1));
 }
-    int[] num = { 1, 2, 5, 0, 10, 34 };
-    PrintElementsReverse(num, num.Length - 1);
+
+Console.Write($"Функция Аккермана равно {Ask(n, m)} ");
+
+
+
+
 
